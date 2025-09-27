@@ -1,0 +1,70 @@
+﻿@page "/panel"
+@rendermode InteractiveServer
+
+<PageTitle>Panel de Control</PageTitle>
+
+<div class="container mt-4">
+    <h1 class="text-center mb-4">📊 Panel de Control - Sistema de Riego</h1>
+
+    <div class="row">
+        <!-- 📍 Sensor de Humedad -->
+        <div class="col-md-3 mb-4">
+            <div class="card sensor-card">
+                <div class="card-body text-center">
+                    <h5 class="card-title">🌱 Humedad del Suelo</h5>
+                    <h2 class="display-5">@humedad %</h2>
+                    <p class="text-muted">Ideal: 40 - 70%</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ☁️ Temperatura -->
+        <div class="col-md-3 mb-4">
+            <div class="card sensor-card">
+                <div class="card-body text-center">
+                    <h5 class="card-title">🌡️ Temperatura</h5>
+                    <h2 class="display-5">@temperatura °C</h2>
+                    <p class="text-muted">Ideal: 20 - 30 °C</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 💧 Estado de Riego -->
+        <div class="col-md-3 mb-4">
+            <div class="card sensor-card">
+                <div class="card-body text-center">
+                    <h5 class="card-title">💧 Estado de Riego</h5>
+                    <h2 class="display-6">@estadoRiego</h2>
+                    <button class="btn btn-sm btn-success mt-2" @onclick="ToggleRiego">
+                        @(riegoActivo ? "Detener Riego" : "Activar Riego")
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 📊 Última actualización -->
+        <div class="col-md-3 mb-4">
+            <div class="card sensor-card">
+                <div class="card-body text-center">
+                    <h5 class="card-title">🕒 Última Lectura</h5>
+                    <h2 class="display-6">@ultimaActualizacion.ToString("HH:mm:ss")</h2>
+                    <p class="text-muted">Actualiza cada 10 seg</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private int humedad = 58;
+    private int temperatura = 24;
+    private bool riegoActivo = false;
+    private string estadoRiego => riegoActivo ? "Activo" : "Inactivo";
+    private DateTime ultimaActualizacion = DateTime.Now;
+
+    private void ToggleRiego()
+    {
+        riegoActivo = !riegoActivo;
+        ultimaActualizacion = DateTime.Now;
+    }
+}

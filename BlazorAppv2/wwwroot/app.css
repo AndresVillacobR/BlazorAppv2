@@ -22,6 +22,7 @@ a, .btn-link {
 
 h1:focus {
     outline: none;
+    
 }
 
 .valid.modified:not([type=checkbox]) {
@@ -57,4 +58,40 @@ h1:focus {
 
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
     text-align: start;
+}
+
+
+.sensor-card {
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.sensor-card:hover {
+    transform: scale(1.03);
+}
+
+h1 {
+    font-weight: bold;
+    color: #0a5c5a;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.display-5, .display-6 {
+    color: #00796b;
+    font-weight: bold;
+}
+
+.btn-success {
+    background-color: #009688;
+    border: none;
+}
+
+.btn-success:hover {
+    background-color: #00796b;
 }

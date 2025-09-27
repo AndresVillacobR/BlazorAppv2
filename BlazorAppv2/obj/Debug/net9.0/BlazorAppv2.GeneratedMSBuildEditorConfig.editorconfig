@@ -24,8 +24,8 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Proyectos/webapp/BlazorAppv2/Components/Pages/Counter.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb3VudGVyLnJhem9y
+[C:/Proyectos/webapp/BlazorAppv2/Components/Pages/ControlManual.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb250cm9sTWFudWFsLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Proyectos/webapp/BlazorAppv2/Components/Pages/Error.razor]
@@ -36,8 +36,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Proyectos/webapp/BlazorAppv2/Components/Pages/Weather.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xXZWF0aGVyLnJhem9y
+[C:/Proyectos/webapp/BlazorAppv2/Components/Pages/Panel.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xQYW5lbC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyectos/webapp/BlazorAppv2/Components/Pages/ProgramarRiego.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xQcm9ncmFtYXJSaWVnby5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Proyectos/webapp/BlazorAppv2/Components/Routes.razor]

@@ -1,0 +1,37 @@
+@page "/control-manual"
+@rendermode InteractiveServer
+
+<PageTitle>Control Manual</PageTitle>
+
+<h1>💧 Control Manual del Riego</h1>
+
+<p>Desde aquí puedes <strong>activar o detener</strong> el riego de forma manual en tiempo real.</p>
+
+<div class="card p-4 text-center shadow-sm" style="max-width: 500px;">
+    <h3>Estado actual: 
+        <span class="@GetEstadoClase()">@estado</span>
+    </h3>
+
+    <button class="btn btn-primary w-100 mt-3" @onclick="ActivarRiego" disabled="@riegoActivo">🚀 Activar Riego</button>
+    <button class="btn btn-danger w-100 mt-2" @onclick="DetenerRiego" disabled="@(!riegoActivo)">🛑 Detener Riego</button>
+</div>
+
+@code {
+    private bool riegoActivo = false;
+    private string estado => riegoActivo ? "Activo" : "Apagado";
+
+    private void ActivarRiego()
+    {
+        riegoActivo = true;
+    }
+
+    private void DetenerRiego()
+    {
+        riegoActivo = false;
+    }
+
+    private string GetEstadoClase()
+    {
+        return riegoActivo ? "text-success fw-bold" : "text-danger fw-bold";
+    }
+}

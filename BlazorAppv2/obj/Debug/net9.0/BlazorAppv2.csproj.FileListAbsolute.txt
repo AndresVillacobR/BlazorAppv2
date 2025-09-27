@@ -20,7 +20,6 @@ C:\Proyectos\webapp\BlazorAppv2\obj\Debug\net9.0\scopedcss\Components\Layout\Mai
 C:\Proyectos\webapp\BlazorAppv2\obj\Debug\net9.0\scopedcss\Components\Layout\NavMenu.razor.rz.scp.css
 C:\Proyectos\webapp\BlazorAppv2\obj\Debug\net9.0\scopedcss\bundle\BlazorAppv2.styles.css
 C:\Proyectos\webapp\BlazorAppv2\obj\Debug\net9.0\scopedcss\projectbundle\BlazorAppv2.bundle.scp.css
-C:\Proyectos\webapp\BlazorAppv2\obj\Debug\net9.0\compressed\m1oybkjpe2-khy4lop6wu.gz
 C:\Proyectos\webapp\BlazorAppv2\obj\Debug\net9.0\compressed\fyqvuceqr4-bqjiyaj88i.gz
 C:\Proyectos\webapp\BlazorAppv2\obj\Debug\net9.0\compressed\01orpf4wqm-c2jlpeoesf.gz
 C:\Proyectos\webapp\BlazorAppv2\obj\Debug\net9.0\compressed\d5cbjdtumq-erw9l3u2r3.gz
@@ -65,8 +64,6 @@ C:\Proyectos\webapp\BlazorAppv2\obj\Debug\net9.0\compressed\bnxd1i833j-notf2xhcf
 C:\Proyectos\webapp\BlazorAppv2\obj\Debug\net9.0\compressed\651oxbc3gh-h1s4sie4z3.gz
 C:\Proyectos\webapp\BlazorAppv2\obj\Debug\net9.0\compressed\ulvqtagbil-63fj8s7r0e.gz
 C:\Proyectos\webapp\BlazorAppv2\obj\Debug\net9.0\compressed\183md9w6i5-0j3bgjxly4.gz
-C:\Proyectos\webapp\BlazorAppv2\obj\Debug\net9.0\compressed\ipy4ydjle5-7xr5albedk.gz
-C:\Proyectos\webapp\BlazorAppv2\obj\Debug\net9.0\compressed\kn8548ax49-7xr5albedk.gz
 C:\Proyectos\webapp\BlazorAppv2\obj\Debug\net9.0\staticwebassets.build.json
 C:\Proyectos\webapp\BlazorAppv2\obj\Debug\net9.0\staticwebassets.build.json.cache
 C:\Proyectos\webapp\BlazorAppv2\obj\Debug\net9.0\staticwebassets.development.json
@@ -76,3 +73,7 @@ C:\Proyectos\webapp\BlazorAppv2\obj\Debug\net9.0\refint\BlazorAppv2.dll
 C:\Proyectos\webapp\BlazorAppv2\obj\Debug\net9.0\BlazorAppv2.pdb
 C:\Proyectos\webapp\BlazorAppv2\obj\Debug\net9.0\BlazorAppv2.genruntimeconfig.cache
 C:\Proyectos\webapp\BlazorAppv2\obj\Debug\net9.0\ref\BlazorAppv2.dll
+C:\Proyectos\webapp\BlazorAppv2\obj\Debug\net9.0\BlazorAppv2.sourcelink.json
+C:\Proyectos\webapp\BlazorAppv2\obj\Debug\net9.0\compressed\m1oybkjpe2-khy4lop6wu.gz
+C:\Proyectos\webapp\BlazorAppv2\obj\Debug\net9.0\compressed\ipy4ydjle5-jd00camw97.gz
+C:\Proyectos\webapp\BlazorAppv2\obj\Debug\net9.0\compressed\kn8548ax49-jd00camw97.gz

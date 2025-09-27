@@ -76,4 +76,4 @@ C:\Proyectos\webapp\BlazorAppv2\obj\Debug\net9.0\ref\BlazorAppv2.dll
 C:\Proyectos\webapp\BlazorAppv2\obj\Debug\net9.0\BlazorAppv2.sourcelink.json
 C:\Proyectos\webapp\BlazorAppv2\obj\Debug\net9.0\compressed\ipy4ydjle5-jd00camw97.gz
 C:\Proyectos\webapp\BlazorAppv2\obj\Debug\net9.0\compressed\kn8548ax49-jd00camw97.gz
-C:\Proyectos\webapp\BlazorAppv2\obj\Debug\net9.0\compressed\m1oybkjpe2-j3a0h4041q.gz
+C:\Proyectos\webapp\BlazorAppv2\obj\Debug\net9.0\compressed\m1oybkjpe2-gzmk82h1rh.gz

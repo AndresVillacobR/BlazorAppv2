@@ -3,17 +3,21 @@
 
 <PageTitle>Control Manual</PageTitle>
 
-<h1>💧 Control Manual del Riego</h1>
+<div class="control-page">
+    <div class="control-content text-center">
+        <h1>💧 Control Manual del Riego</h1>
 
-<p>Desde aquí puedes <strong>activar o detener</strong> el riego de forma manual en tiempo real.</p>
+        <p>Desde aquí puedes <strong>activar o detener</strong> el riego de forma manual en tiempo real.</p>
 
-<div class="card p-4 text-center shadow-sm" style="max-width: 500px;">
-    <h3>Estado actual: 
-        <span class="@GetEstadoClase()">@estado</span>
-    </h3>
+        <div class="card p-4 text-center shadow-sm" style="max-width: 500px; width: 100%;">
+            <h3>Estado actual:
+                <span class="@GetEstadoClase()">@estado</span>
+            </h3>
 
-    <button class="btn btn-primary w-100 mt-3" @onclick="ActivarRiego" disabled="@riegoActivo">🚀 Activar Riego</button>
-    <button class="btn btn-danger w-100 mt-2" @onclick="DetenerRiego" disabled="@(!riegoActivo)">🛑 Detener Riego</button>
+            <button class="btn btn-primary w-100 mt-3" @onclick="ActivarRiego" disabled="@riegoActivo">🚀 Activar Riego</button>
+            <button class="btn btn-danger w-100 mt-2" @onclick="DetenerRiego" disabled="@(!riegoActivo)">🛑 Detener Riego</button>
+        </div>
+    </div>
 </div>
 
 @code {

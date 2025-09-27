@@ -1,35 +1,42 @@
 ﻿@page "/programar-riego"
 @attribute [StreamRendering]
+@rendermode InteractiveServer
 
-<PageTitle>Weather</PageTitle>
 
-<h1>Weather</h1>
+<PageTitle>Historial de Riegos</PageTitle>
+<h1>Historial de Riegos</h1>
 
-<p>This component demonstrates showing data.</p>
+<p>Este componente muestra el historial de riegos.</p>
 
-@if (forecasts == null)
+@if (historial == null)
 {
-    <p><em>Loading...</em></p>
+    <p><em>Cargando...</em></p>
 }
 else
 {
     <table class="table">
         <thead>
             <tr>
-                <th>Date</th>
-                <th aria-label="Temperature in Celsius">Temp. (C)</th>
-                <th aria-label="Temperature in Farenheit">Temp. (F)</th>
-                <th>Summary</th>
+                <th>ID</th>
+                <th>ID Dispositivo</th>
+                <th>Inicio</th>
+                <th>Fin</th>
+                <th>Tipo</th>
+                <th>Humedad Inicio</th>
+                <th>Humedad Fin</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var forecast in forecasts)
+            @foreach (var riego in historial)
             {
                 <tr>
-                    <td>@forecast.Date.ToShortDateString()</td>
-                    <td>@forecast.TemperatureC</td>
-                    <td>@forecast.TemperatureF</td>
-                    <td>@forecast.Summary</td>
+                    <td>@riego.Id</td>
+                    <td>@riego.DispositivoId</td>
+                    <td>@riego.Inicio.ToString("g")</td>
+                    <td>@riego.Fin.ToString("g")</td>
+                    <td>@riego.Tipo</td>
+                    <td>@riego.HumedadInicio</td>
+                    <td>@riego.HumedadFin</td>
                 </tr>
             }
         </tbody>
@@ -37,28 +44,33 @@ else
 }
 
 @code {
-    private WeatherForecast[]? forecasts;
+    private List<HistorialRiego>? historial;
 
     protected override async Task OnInitializedAsync()
     {
-        // Simulate asynchronous loading to demonstrate streaming rendering
+        // Simular carga asincrónica
         await Task.Delay(500);
 
-        var startDate = DateOnly.FromDateTime(DateTime.Now);
-        var summaries = new[] { "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching" };
-        forecasts = Enumerable.Range(1, 5).Select(index => new WeatherForecast
+        historial = Enumerable.Range(1, 5).Select(index => new HistorialRiego
         {
-            Date = startDate.AddDays(index),
-            TemperatureC = Random.Shared.Next(-20, 55),
-            Summary = summaries[Random.Shared.Next(summaries.Length)]
-        }).ToArray();
+            Id = Guid.NewGuid(),
+            DispositivoId = Guid.NewGuid(),
+            Inicio = DateTime.Now.AddDays(-index),
+            Fin = DateTime.Now.AddDays(-index).AddHours(2),
+            Tipo = "Automático",
+            HumedadInicio = Random.Shared.Next(30, 50),
+            HumedadFin = Random.Shared.Next(50, 80)
+        }).ToList();
     }
 
-    private class WeatherForecast
+    private class HistorialRiego
     {
-        public DateOnly Date { get; set; }
-        public int TemperatureC { get; set; }
-        public string? Summary { get; set; }
-        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+        public Guid Id { get; set; }
+        public Guid DispositivoId { get; set; }
+        public DateTime Inicio { get; set; }
+        public DateTime Fin { get; set; }
+        public string Tipo { get; set; } = string.Empty;
+        public double HumedadInicio { get; set; }
+        public double HumedadFin { get; set; }
     }
 }

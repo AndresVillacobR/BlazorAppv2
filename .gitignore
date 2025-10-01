@@ -2,20 +2,23 @@
 [Bb]in/
 [Oo]bj/
 
-## NuGet packages
-*.nupkg
-.nuget/
-
-## VS files
+## Visual Studio files
 *.user
 *.suo
 *.vscode/
+
+## NuGet
+*.nupkg
+.nuget/
+
+## Runtime files
+appsettings.*.json
+!appsettings.json
 
 ## Docker
 Dockerfile*
 docker-compose*
 .dockerignore
 
-## Runtime files
-appsettings.*.json
-!appsettings.json
+## VS Code
+.vscode/

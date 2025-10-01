@@ -10,8 +10,8 @@ builder.Services.AddRazorComponents()
 // Configurar Supabase
 builder.Services.AddScoped(provider =>
 {
-    var url = builder.Configuration["Supabase:Url"];
-    var key = builder.Configuration["Supabase:Key"];
+    var url = builder.Configuration["https://rddaujeuraknqrmrhsur.supabase.co"];
+    var key = builder.Configuration["eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJkZGF1amV1cmFrbnFybXJoc3VyIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1ODY2OTE0OSwiZXhwIjoyMDc0MjQ1MTQ5fQ.f_xBoOjFM3vXOBgG0QbmUUFNzdUqJOwl8x9squPNt4g"];
     
     if (string.IsNullOrEmpty(url) || string.IsNullOrEmpty(key))
     {

@@ -1,10 +1,29 @@
 using BlazorAppv2.Components;
+using Supabase;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+// Configurar Supabase ← Agrega esto
+builder.Services.AddScoped(provider =>
+{
+    var url = builder.Configuration["Supabase:Url"];
+    var key = builder.Configuration["Supabase:Key"];
+    
+    if (string.IsNullOrEmpty(url) || string.IsNullOrEmpty(key))
+    {
+        throw new InvalidOperationException("Supabase URL and Key must be configured in appsettings.json");
+    }
+    
+    return new Client(url, key, new SupabaseOptions
+    {
+        AutoRefreshToken = true,
+        AutoConnectRealtime = true
+    });
+});
 
 var app = builder.Build();
 
@@ -17,13 +36,10 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-
+app.UseStaticFiles();
 app.UseAntiforgery();
 
-app.MapStaticAssets();
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
 
 app.Run();
-

@@ -96,3 +96,9 @@ C:\Proyectos\webapp\BlazorAppv2\bin\Debug\net9.0\System.Reactive.dll
 C:\Proyectos\webapp\BlazorAppv2\bin\Debug\net9.0\Websocket.Client.dll
 C:\Proyectos\webapp\BlazorAppv2\obj\Debug\net9.0\BlazorAppv2.csproj.AssemblyReference.cache
 C:\Proyectos\webapp\BlazorAppv2\obj\Debug\net9.0\BlazorAp.8900DA4E.Up2Date
+C:\Proyectos\webapp\BlazorAppv2\bin\Debug\net9.0\out\web.config
+C:\Proyectos\webapp\BlazorAppv2\bin\Debug\net9.0\out\appsettings.Development.json
+C:\Proyectos\webapp\BlazorAppv2\bin\Debug\net9.0\out\appsettings.json
+C:\Proyectos\webapp\BlazorAppv2\bin\Debug\net9.0\out\BlazorAppv2.deps.json
+C:\Proyectos\webapp\BlazorAppv2\bin\Debug\net9.0\out\BlazorAppv2.runtimeconfig.json
+C:\Proyectos\webapp\BlazorAppv2\bin\Debug\net9.0\out\BlazorAppv2.staticwebassets.endpoints.json

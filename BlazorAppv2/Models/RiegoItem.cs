@@ -12,7 +12,6 @@ namespace BlazorAppv2.Models
         public DateTime fin { get; set; }
         public string tipo { get; set; } = string.Empty;
         public double humedad_inicio { get; set; }
-
-
+        public double humedad_fin { get; set; }
     }
 }

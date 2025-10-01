@@ -1,11 +1,12 @@
 ﻿@page "/panel"
 @rendermode InteractiveServer
+@inject Supabase.Client supabaseClient
+@using BlazorAppv2.Models
 
 <PageTitle>Panel de Control</PageTitle>
 
 <div class="container mt-4">
     <h1 class="text-center mb-4">📊 Panel de Control - Sistema de Riego</h1>
-
     <div class="row">
         <!-- 📍 Sensor de Humedad -->
         <div class="col-md-3 mb-4">
@@ -17,7 +18,6 @@
                 </div>
             </div>
         </div>
-
         <!-- ☁️ Temperatura -->
         <div class="col-md-3 mb-4">
             <div class="card sensor-card">
@@ -28,20 +28,18 @@
                 </div>
             </div>
         </div>
-
         <!-- 💧 Estado de Riego -->
         <div class="col-md-3 mb-4">
             <div class="card sensor-card">
                 <div class="card-body text-center">
                     <h5 class="card-title">💧 Estado de Riego</h5>
                     <h2 class="display-6">@estadoRiego</h2>
-                    <button class="btn btn-sm btn-success mt-2" @onclick="ToggleRiego">
+                    <button class="btn btn-sm btn-success mt-2" @onclick="ToggleRiegoAsync">
                         @(riegoActivo ? "Detener Riego" : "Activar Riego")
                     </button>
                 </div>
             </div>
         </div>
-
         <!-- 📊 Última actualización -->
         <div class="col-md-3 mb-4">
             <div class="card sensor-card">
@@ -62,9 +60,30 @@
     private string estadoRiego => riegoActivo ? "Activo" : "Inactivo";
     private DateTime ultimaActualizacion = DateTime.Now;
 
-    private void ToggleRiego()
+    private async Task ToggleRiegoAsync()
     {
         riegoActivo = !riegoActivo;
         ultimaActualizacion = DateTime.Now;
+
+        if (riegoActivo)
+        {
+            await GuardarRiegoEnBaseDatos();
+        }
+    }
+
+    private async Task GuardarRiegoEnBaseDatos()
+    {
+        var nuevoRiego = new RiegoItem
+        {
+            id = Guid.NewGuid(),
+            dispositivo_id = Guid.NewGuid(), // Usa tu ID real si tienes uno fijo
+            inicio = DateTime.Now,
+            fin = DateTime.Now.AddHours(2),
+            tipo = "Manual",
+            humedad_inicio = humedad,
+            humedad_fin = humedad + 10
+        };
+
+        await supabaseClient.From<RiegoItem>().Insert(nuevoRiego);
     }
 }

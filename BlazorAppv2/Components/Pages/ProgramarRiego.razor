@@ -1,16 +1,16 @@
 ﻿@page "/programar-riego"
-@attribute [StreamRendering]
-@rendermode InteractiveServer
+@inject Supabase.Client supabaseClient
+@using BlazorAppv2.Models
 
-
-<PageTitle>Historial de Riegos</PageTitle>
 <h1>Historial de Riegos</h1>
-
-<p>Este componente muestra el historial de riegos.</p>
 
 @if (historial == null)
 {
-    <p><em>Cargando...</em></p>
+    <p>Cargando...</p>
+}
+else if (!historial.Any())
+{
+    <p>No hay registros en el historial</p>
 }
 else
 {
@@ -30,13 +30,13 @@ else
             @foreach (var riego in historial)
             {
                 <tr>
-                    <td>@riego.Id</td>
-                    <td>@riego.DispositivoId</td>
-                    <td>@riego.Inicio.ToString("g")</td>
-                    <td>@riego.Fin.ToString("g")</td>
-                    <td>@riego.Tipo</td>
-                    <td>@riego.HumedadInicio</td>
-                    <td>@riego.HumedadFin</td>
+                    <td>@riego.id.ToString().Substring(0, 8)...</td>
+                    <td>@riego.dispositivo_id.ToString().Substring(0, 8)...</td>
+                    <td>@riego.inicio.ToString("dd/MM/yyyy HH:mm")</td>
+                    <td>@riego.fin.ToString("dd/MM/yyyy HH:mm")</td>
+                    <td>@riego.tipo</td>
+                    <td>@riego.humedad_inicio%</td>
+                    <td>@riego.humedad_fin%</td>
                 </tr>
             }
         </tbody>
@@ -44,33 +44,24 @@ else
 }
 
 @code {
-    private List<HistorialRiego>? historial;
+    private List<RiegoItem>? historial;
 
     protected override async Task OnInitializedAsync()
     {
-        // Simular carga asincrónica
-        await Task.Delay(500);
-
-        historial = Enumerable.Range(1, 5).Select(index => new HistorialRiego
-        {
-            Id = Guid.NewGuid(),
-            DispositivoId = Guid.NewGuid(),
-            Inicio = DateTime.Now.AddDays(-index),
-            Fin = DateTime.Now.AddDays(-index).AddHours(2),
-            Tipo = "Automático",
-            HumedadInicio = Random.Shared.Next(30, 50),
-            HumedadFin = Random.Shared.Next(50, 80)
-        }).ToList();
+        await CargarHistorialReal();
     }
 
-    private class HistorialRiego
+    private async Task CargarHistorialReal()
     {
-        public Guid Id { get; set; }
-        public Guid DispositivoId { get; set; }
-        public DateTime Inicio { get; set; }
-        public DateTime Fin { get; set; }
-        public string Tipo { get; set; } = string.Empty;
-        public double HumedadInicio { get; set; }
-        public double HumedadFin { get; set; }
+        var result = await supabaseClient.From<RiegoItem>().Get();
+        if (result?.ResponseMessage?.IsSuccessStatusCode == true)
+        {
+            historial = result.Models ?? new List<RiegoItem>();
+        }
+        else
+        {
+            historial = new List<RiegoItem>();
+        }
+        StateHasChanged();
     }
 }

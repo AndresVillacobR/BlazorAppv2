@@ -1,4 +1,5 @@
 using BlazorAppv2.Components;
+using BlazorAppv2.Models;
 using Supabase;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,23 +8,49 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
-// Configurar Supabase
-builder.Services.AddScoped(provider =>
+// Configurar Supabase usando appsettings.json
+var url = builder.Configuration["Supabase:Url"];
+var key = builder.Configuration["Supabase:Key"];
+
+if (string.IsNullOrEmpty(url) || string.IsNullOrEmpty(key))
 {
-    var url = builder.Configuration["https://rddaujeuraknqrmrhsur.supabase.co"];
-    var key = builder.Configuration["eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJkZGF1amV1cmFrbnFybXJoc3VyIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1ODY2OTE0OSwiZXhwIjoyMDc0MjQ1MTQ5fQ.f_xBoOjFM3vXOBgG0QbmUUFNzdUqJOwl8x9squPNt4g"];
-    
-    if (string.IsNullOrEmpty(url) || string.IsNullOrEmpty(key))
-    {
-        throw new InvalidOperationException("Supabase URL and Key must be configured in appsettings.json");
-    }
-    
-    return new Client(url, key, new SupabaseOptions
-    {
-        AutoRefreshToken = true,
-        AutoConnectRealtime = true
-    });
+    throw new InvalidOperationException("Supabase URL and Key must be configured in appsettings.json");
+}
+
+var supabaseClient = new Client(url, key, new SupabaseOptions
+{
+    AutoRefreshToken = true,
+    AutoConnectRealtime = true
 });
+
+// ...existing code...
+try
+{
+    var test = supabaseClient
+     .From<RiegoItem>()
+     .Select("id")
+     .Limit(1)
+     .Get()
+     .GetAwaiter()
+     .GetResult();
+
+    if (test.ResponseMessage.IsSuccessStatusCode)
+    {
+        Console.WriteLine("✅ Conexión a Supabase exitosa");
+    }
+    else
+    {
+        Console.WriteLine("❌ Error de conexión a Supabase: " + test.ResponseMessage.StatusCode);
+    }
+}
+catch (Exception ex)
+{
+    Console.WriteLine("❌ Error de conexión a Supabase: " + ex.Message);
+}
+// ...existing code...
+
+// Registrar el cliente como singleton
+builder.Services.AddSingleton(supabaseClient);
 
 var app = builder.Build();
 
